@@ -9,32 +9,32 @@
 @layer base {
   :root {
     /* Defined using HSL for easier theme variations if needed */
-    --background: 84 42% 90%; /* Mint/pale green background */
-    --foreground: 0 0% 20%; /* Dark text for readability */
+    --background: 193 33% 15%; /* Elite teal background #192d34 */
+    --foreground: 39 24% 89%; /* Cream text color #EBE7D9 */
 
-    --card: 84 42% 94%; /* Slightly lighter card background */
-    --card-foreground: 0 0% 20%;
+    --card: 193 33% 18%; /* Slightly lighter card background */
+    --card-foreground: 39 24% 89%; /* Cream text */
 
-    --popover: 84 42% 94%;
-    --popover-foreground: 0 0% 20%;
+    --popover: 193 33% 18%;
+    --popover-foreground: 39 24% 89%;
 
     --primary: 160 70% 60%; /* Athena Green - adjusted saturation/lightness */
-    --primary-foreground: 0 0% 20%; /* Dark text on primary */
+    --primary-foreground: 193 33% 15%; /* Elite teal text on primary */
 
-    --secondary: 84 10% 85%; /* Light gray with mint tint */
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 193 33% 22%; /* Lighter teal */
+    --secondary-foreground: 39 24% 89%; /* Cream text */
 
-    --muted: 84 15% 85%; /* Muted light gray */
-    --muted-foreground: 0 0% 40%; /* Darker gray for muted text */
+    --muted: 193 30% 25%; /* Muted teal */
+    --muted-foreground: 39 24% 75%; /* Slightly dimmed cream text */
 
     --accent: 160 70% 60%; /* Same as primary for accent */
-    --accent-foreground: 0 0% 20%;
+    --accent-foreground: 193 33% 15%;
 
     --destructive: 0 70% 55%; /* Red */
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 39 24% 89%;
 
-    --border: 84 10% 80%; /* Light border */
-    --input: 84 10% 80%;
+    --border: 192 30% 20%; /* Border color */
+    --input: 192 30% 20%;
     --ring: 160 70% 60%; /* Primary color for focus rings */
 
     --radius: 0.5rem;
@@ -53,38 +53,38 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-athena-navy text-athena-cream antialiased;
     font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv03';
     font-family: 'DM Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-normal text-foreground font-bold;
+    @apply font-serif tracking-normal text-athena-cream font-bold;
     font-family: 'Fraunces', serif;
   }
 
   /* Stylish callout text */
   .display-text {
     font-family: 'Cormorant', serif;
-    @apply tracking-tight leading-tight;
+    @apply tracking-tight leading-tight text-athena-cream;
   }
 
   /* Refined paragraph styles */
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-athena-cream;
     font-family: 'DM Sans', sans-serif;
   }
 
   /* Stylized quotes */
   blockquote {
     font-family: 'Cormorant', serif;
-    @apply italic text-lg leading-relaxed;
+    @apply italic text-lg leading-relaxed text-athena-cream;
   }
 
   /* Enhanced link hover effect */
   a:not(.btn-primary, .btn-secondary-white) {
     position: relative;
-    @apply text-black font-medium;
+    @apply text-athena-cream font-medium;
   }
 
   a:not(.btn-primary, .btn-secondary-white)::after {
@@ -94,7 +94,7 @@
     height: 1px;
     bottom: -2px;
     left: 0;
-    @apply bg-black transition-all duration-300 ease-in-out;
+    @apply bg-athena-cream transition-all duration-300 ease-in-out;
   }
 
   a:not(.btn-primary, .btn-secondary-white):hover::after {
@@ -110,7 +110,7 @@
 
   /* Primary button style with enhanced hover effect */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-black px-6 py-3 text-base font-medium text-white shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-black/50 focus:ring-offset-2 focus:ring-offset-background relative overflow-hidden;
+    @apply inline-flex items-center justify-center rounded-md bg-athena-navy px-6 py-3 text-base font-medium text-athena-cream shadow-sm transition-all duration-300 ease-in-out hover:shadow-md hover:bg-athena-navy/90 focus:outline-none focus:ring-2 focus:ring-athena-cream/30 focus:ring-offset-2 focus:ring-offset-athena-navy relative overflow-hidden border border-athena-cream/20 hover:border-athena-cream/40;
   }
   
   .btn-primary::before {
@@ -120,7 +120,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     transition: all 0.6s;
   }
   
@@ -130,13 +130,13 @@
   
   /* Secondary button with refined hover */
   .btn-secondary-white {
-    @apply inline-flex items-center justify-center rounded-md border border-foreground/50 bg-transparent px-6 py-3 text-base font-medium text-foreground shadow-sm transition-all duration-300 ease-in-out hover:bg-foreground/10 hover:shadow-md hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:ring-offset-2 focus:ring-offset-background;
+    @apply inline-flex items-center justify-center rounded-md bg-athena-navy px-6 py-3 text-base font-medium text-athena-cream shadow-sm transition-all duration-300 ease-in-out hover:bg-athena-navy/90 hover:shadow-md border border-athena-cream/20 hover:border-athena-cream/40 focus:outline-none focus:ring-2 focus:ring-athena-cream/30 focus:ring-offset-2 focus:ring-offset-athena-navy;
   }
 
   /* Card styles with glassmorphism */
   .glass-card {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl p-6 shadow-xl;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    @apply bg-athena-navy/70 backdrop-blur-md border border-athena-cream/20 rounded-xl p-6 shadow-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
   /* Refined card style to match design */
@@ -153,7 +153,7 @@
   
   .card-3d:hover {
     transform: rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   /* Gradient text utility */
@@ -192,7 +192,7 @@
   
   .fancy-list-item::before {
     content: counter(fancy-counter, decimal-leading-zero);
-    @apply absolute left-0 top-0 font-serif text-3xl text-black/70 font-light;
+    @apply absolute left-0 top-0 font-serif text-3xl text-athena-cream/70 font-light;
     font-family: 'Cormorant', serif;
   }
   

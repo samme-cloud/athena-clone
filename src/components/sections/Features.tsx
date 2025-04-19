@@ -74,19 +74,19 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="features" className="py-24 md:py-32 bg-athena-navy relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-texture-dots opacity-30"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-mint-100/30 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-sage-100/30 rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-mint-400/20 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-sage-300/20 rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-mint-700" />
-            <p className="text-overline uppercase tracking-widest text-black font-medium">Capabilities</p>
-            <Sparkles className="w-5 h-5 text-mint-700" />
+            <Sparkles className="w-5 h-5 text-athena-green" />
+            <p className="text-overline uppercase tracking-widest text-athena-cream font-medium">Capabilities</p>
+            <Sparkles className="w-5 h-5 text-athena-green" />
           </div>
           
           <h2 className={`text-4xl md:text-5xl font-serif font-bold mb-6 transition-all duration-1000 ease-out ${
@@ -95,7 +95,7 @@ const Features: React.FC = () => {
             Delegate with <span className="asymmetric-underline">Confidence</span>
           </h2>
           
-          <p className={`text-xl text-gray-700 mx-auto transition-all duration-1000 delay-200 ease-out ${
+          <p className={`text-xl text-athena-cream/80 mx-auto transition-all duration-1000 delay-200 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Athena combines human expertise with artificial intelligence to deliver an assistant experience that exceeds expectations.
@@ -107,30 +107,30 @@ const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className={`premium-card p-8 transition-all duration-700 backdrop-blur-sm ${
-                feature.highlight ? 'border-mint-300/50 bg-white/90' : 'bg-white/70'
+              className={`glass-card p-8 transition-all duration-700 backdrop-blur-sm ${
+                feature.highlight ? 'border-athena-green/30' : ''
               } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setActiveFeature(index)}
             >
               <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
                 activeFeature === index 
-                  ? 'bg-mint-400/20 text-mint-800 transform scale-110' 
-                  : 'bg-mint-100/30 text-mint-700'
+                  ? 'bg-mint-400/30 text-athena-green transform scale-110' 
+                  : 'bg-mint-400/20 text-athena-green'
               }`}>
                 {feature.icon}
               </div>
               
-              <h3 className="text-2xl font-serif font-medium mb-4">
+              <h3 className="text-2xl font-serif font-medium mb-4 text-athena-cream">
                 {feature.title}
               </h3>
               
-              <p className="text-gray-700 mb-6">
+              <p className="text-athena-cream/80 mb-6">
                 {feature.description}
               </p>
               
               <div className={`h-1 w-16 rounded-full transition-all duration-500 ${
-                activeFeature === index ? 'bg-mint-500 w-24' : 'bg-mint-200 w-16'
+                activeFeature === index ? 'bg-athena-green w-24' : 'bg-mint-400/30 w-16'
               }`}></div>
             </div>
           ))}
@@ -140,13 +140,13 @@ const Features: React.FC = () => {
         <div className={`mt-24 transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}>
-          <div className="glass-card p-8 md:p-12 bg-white/80 max-w-4xl mx-auto">
+          <div className="glass-card p-8 md:p-12 max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2">
-                <div className="aspect-video bg-mint-100 rounded-xl overflow-hidden relative">
+                <div className="aspect-video bg-mint-400/20 rounded-xl overflow-hidden relative">
                   {/* This would be an image or video in a real implementation */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="font-accent text-2xl text-mint-800 italic">Feature Preview</p>
+                    <p className="font-accent text-2xl text-athena-green italic">Feature Preview</p>
                   </div>
                   
                   {/* Interactive dots */}
@@ -155,7 +155,7 @@ const Features: React.FC = () => {
                       <button 
                         key={idx}
                         className={`w-3 h-3 rounded-full transition-all ${
-                          activeFeature === idx ? 'bg-mint-600 w-6' : 'bg-mint-300/50'
+                          activeFeature === idx ? 'bg-athena-green w-6' : 'bg-mint-400/30'
                         }`}
                         onClick={() => setActiveFeature(idx)}
                         aria-label={`View feature ${idx + 1}`}
@@ -167,23 +167,23 @@ const Features: React.FC = () => {
               
               <div className="w-full md:w-1/2">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-4 h-4 rounded-full bg-mint-500"></div>
-                  <p className="text-sm uppercase tracking-widest text-black/70 font-medium">
+                  <div className="w-4 h-4 rounded-full bg-athena-green"></div>
+                  <p className="text-sm uppercase tracking-widest text-athena-cream/80 font-medium">
                     Featured Capability
                   </p>
                 </div>
                 
-                <h3 className="text-2xl font-serif font-semibold mb-4">
+                <h3 className="text-2xl font-serif font-semibold mb-4 text-athena-cream">
                   {features[activeFeature].title}
                 </h3>
                 
-                <p className="text-lg text-gray-700 mb-8">
+                <p className="text-lg text-athena-cream/80 mb-8">
                   {features[activeFeature].description}
                 </p>
                 
                 <Button 
                   variant="default" 
-                  className="hover-lift bg-black text-white hover:bg-black/90 px-6 py-2 text-base rounded-xl"
+                  className="hover-lift bg-athena-green text-athena-navy hover:bg-athena-green/90 px-6 py-2 text-base rounded-xl"
                   asChild
                 >
                   <a href="#demo">
@@ -199,14 +199,14 @@ const Features: React.FC = () => {
         <div className={`mt-24 text-center transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}>
-          <h3 className="text-2xl md:text-3xl font-serif font-medium mb-8">
+          <h3 className="text-2xl md:text-3xl font-serif font-medium mb-8 text-athena-cream">
             Ready to experience the full power of <span className="highlight-text">Athena</span>?
           </h3>
           
           <Button 
             variant="default" 
             size="lg" 
-            className="hover-lift bg-black text-white hover:bg-black/90 px-8 py-6 text-lg rounded-xl"
+            className="hover-lift bg-athena-green text-athena-navy hover:bg-athena-green/90 px-8 py-6 text-lg rounded-xl"
             asChild
           >
             <a href="#pricing">
@@ -214,7 +214,7 @@ const Features: React.FC = () => {
               <span>Start your free trial</span>
             </a>
           </Button>
-          <p className="text-sm text-gray-500 mt-4">No credit card required • 14-day trial</p>
+          <p className="text-sm text-athena-cream/70 mt-4">No credit card required • 14-day trial</p>
         </div>
       </div>
     </section>
