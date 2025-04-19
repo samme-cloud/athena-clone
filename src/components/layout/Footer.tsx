@@ -66,7 +66,13 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex flex-col space-y-4">
               <div className="flex space-x-5">
-                <a href="https://twitter.com" className="text-gray-500 hover:text-gray-900" aria-label="Twitter">
+                <a 
+                  href="https://twitter.com/horizontalen" 
+                  className="text-gray-500 hover:text-gray-900" 
+                  aria-label="Twitter"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <Twitter className="w-5 h-5" />
                 </a>
                 <a href="https://facebook.com" className="text-gray-500 hover:text-gray-900" aria-label="Facebook">

@@ -150,6 +150,17 @@ const Hero: React.FC<HeroProps> = ({ videoBackground = false }) => {
               <div className="w-4 h-4 rounded-full bg-mint-500 mr-2"></div>
               <span className={`text-sm ${videoBackground ? 'text-gray-300' : 'text-gray-600'}`}>Cancel anytime</span>
             </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 rounded-full bg-mint-500 mr-2"></div>
+              <a 
+                href="https://twitter.com/horizontalen" 
+                className={`text-sm ${videoBackground ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-black'} underline`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Follow us on Twitter
+              </a>
+            </div>
           </div>
           
           {/* Enhanced social proof */}
