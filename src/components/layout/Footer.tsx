@@ -1,10 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+// LinkedIn script needs to be loaded only once
+declare global {
+  interface Window {
+    IN: any;
+  }
+}
+
 const Footer: React.FC = () => {
+  // Initialize LinkedIn widgets when component mounts
+  useEffect(() => {
+    // Create LinkedIn script if it doesn't exist
+    if (!document.getElementById('linkedin-script')) {
+      const script = document.createElement('script');
+      script.id = 'linkedin-script';
+      script.type = 'text/javascript';
+      script.src = '//platform.linkedin.com/in.js';
+      script.innerHTML = 'lang: en_US';
+      
+      // Append script to document
+      document.body.appendChild(script);
+      
+      // Initialize or reload LinkedIn widgets
+      script.onload = () => {
+        if (window.IN && window.IN.parse) {
+          window.IN.parse();
+        }
+      };
+    } else {
+      // If script exists, just reparse the widgets
+      if (window.IN && window.IN.parse) {
+        window.IN.parse();
+      }
+    }
+    
+    // Cleanup
+    return () => {
+      const script = document.getElementById('linkedin-script');
+      if (script) {
+        // Don't remove the script to prevent multiple reloads
+        // Just cleanup any event listeners if needed
+      }
+    };
+  }, []);
+
   return (
     <footer className="bg-gray-50 border-t border-gray-200" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
@@ -21,22 +64,29 @@ const Footer: React.FC = () => {
             <p className="text-gray-600 max-w-md">
               Athena helps busy executives reclaim 15+ hours per week with our AI-powered elite assistant services.
             </p>
-            <div className="flex space-x-5">
-              <a href="https://twitter.com" className="text-gray-500 hover:text-gray-900" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://facebook.com" className="text-gray-500 hover:text-gray-900" aria-label="Facebook">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="https://instagram.com" className="text-gray-500 hover:text-gray-900" aria-label="Instagram">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="https://linkedin.com" className="text-gray-500 hover:text-gray-900" aria-label="LinkedIn">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://github.com" className="text-gray-500 hover:text-gray-900" aria-label="GitHub">
-                <Github className="w-5 h-5" />
-              </a>
+            <div className="flex flex-col space-y-4">
+              <div className="flex space-x-5">
+                <a href="https://twitter.com" className="text-gray-500 hover:text-gray-900" aria-label="Twitter">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="https://facebook.com" className="text-gray-500 hover:text-gray-900" aria-label="Facebook">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="https://instagram.com" className="text-gray-500 hover:text-gray-900" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="https://linkedin.com" className="text-gray-500 hover:text-gray-900" aria-label="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://github.com" className="text-gray-500 hover:text-gray-900" aria-label="GitHub">
+                  <Github className="w-5 h-5" />
+                </a>
+              </div>
+              
+              {/* LinkedIn Follow Button */}
+              <div className="mt-2" aria-label="Follow us on LinkedIn">
+                <div className="in-follow-company" data-id="106525266" data-counter="right"></div>
+              </div>
             </div>
           </div>
           
