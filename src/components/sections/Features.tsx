@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Brain, Clock, ShieldCheck, MessagesSquare, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import AssistantCarousel from '../home/AssistantCarousel';
 
 interface FeatureItem {
   icon: React.ReactNode;
@@ -82,7 +83,7 @@ const Features: React.FC = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-5 h-5 text-athena-green" />
             <p className="text-overline uppercase tracking-widest text-athena-cream font-medium">Capabilities</p>
@@ -99,7 +100,12 @@ const Features: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Athena combines human expertise with artificial intelligence to deliver an assistant experience that exceeds expectations.
+             Meet some of the elite talent ready to help you achieve more.
           </p>
+        </div>
+        
+        <div className="mb-20">
+          <AssistantCarousel />
         </div>
         
         {/* Features grid */}
@@ -134,72 +140,6 @@ const Features: React.FC = () => {
               }`}></div>
             </div>
           ))}
-        </div>
-        
-        {/* Feature showcase */}
-        <div className={`mt-24 transition-all duration-1000 delay-500 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}>
-          <div className="glass-card p-8 md:p-12 max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="w-full md:w-1/2">
-                <div className="aspect-video bg-mint-400/20 rounded-xl overflow-hidden relative">
-                  {/* This would be an image or video in a real implementation */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="font-accent text-2xl text-athena-green italic">Feature Preview</p>
-                  </div>
-                  
-                  {/* Interactive dots */}
-                  <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
-                    {features.map((_, idx) => (
-                      <button 
-                        key={idx}
-                        className={`w-3 h-3 rounded-full transition-all ${
-                          activeFeature === idx ? 'bg-athena-green w-6' : 'bg-mint-400/30'
-                        }`}
-                        onClick={() => setActiveFeature(idx)}
-                        aria-label={`View feature ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="w-full md:w-1/2">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-4 h-4 rounded-full bg-athena-green"></div>
-                  <p className="text-sm uppercase tracking-widest text-athena-cream/80 font-medium">
-                    Featured Capability
-                  </p>
-                </div>
-                
-                <h3 className="text-2xl font-serif font-semibold mb-4 text-athena-cream">
-                  {features[activeFeature].title}
-                </h3>
-                
-                <p className="text-lg text-athena-cream/80 mb-8">
-                  {features[activeFeature].description}
-                </p>
-                
-                <Button 
-                  variant="default" 
-                  className="hover-lift bg-athena-green text-athena-navy hover:bg-athena-green/90 px-6 py-2 text-base rounded-xl"
-                  asChild
-                >
-                  <a href="#demo">
-                    <span>See it in action</span>
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* CTA */}
-        <div className="text-center mt-20">
-          <Button className="bg-athena-green hover:bg-athena-green/90 text-black px-10 py-6 text-lg font-semibold">
-            Get Started
-          </Button>
         </div>
       </div>
     </section>
