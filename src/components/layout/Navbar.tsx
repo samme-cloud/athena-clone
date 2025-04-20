@@ -74,79 +74,46 @@ const Navbar: React.FC = () => {
   }, [location.state, navigate]);
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-elite-teal shadow-md py-3' : 'bg-transparent py-5'
-      }`}
-    >
+    <nav className={`fixed w-full z-50 transition-all duration-300 font-['Montserrat'] ${isScrolled ? 'py-6 bg-athena-navy/90 backdrop-blur-sm shadow-lg' : 'py-8'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a 
-            href="#hero" 
-            className={`font-serif text-2xl font-bold ${isScrolled ? 'text-athena-cream' : 'text-athena-cream'} group`}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavLinkClick('hero');
-            }}
-          >
-            Athena<span className="text-athena-cream transition-all">.</span>
-            <span className="block h-0.5 w-0 bg-athena-cream/40 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          {/* Logo - Ensure width auto or remove fixed pixel dimensions if issues persist */}
+          <Link to="/" className="flex items-center">
+            <img src="/images/logos/image2vector.svg" alt="Horizons Logo" className="h-14 w-auto" />
+          </Link>
           
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {[
-              { id: 'hero', label: 'Home' },
-              { id: 'features', label: 'Why Athena' },
-              { id: 'testimonials', label: 'Testimonials' },
-              { id: 'pricing', label: 'Pricing' },
-            ].map((link) => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  className={`relative px-1 py-2 font-medium transition-colors duration-300 ${
-                    isScrolled
-                      ? (activeLink === link.id
-                        ? 'text-athena-cream'
-                        : 'text-athena-cream/80 hover:text-athena-cream')
-                      : (activeLink === link.id
-                        ? 'text-athena-cream'
-                        : 'text-athena-cream/80 hover:text-athena-cream')
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavLinkClick(link.id);
-                  }}
-                >
-                  {link.label}
-                  <span 
-                    className={`absolute left-0 bottom-0 w-full h-0.5 bg-athena-cream/40 transform origin-bottom transition-transform duration-300 ${
-                      activeLink === link.id ? 'scale-x-100' : 'scale-x-0'
-                    }`}
-                  ></span>
-                </a>
-              </li>
+              { name: 'Elite Assistants', href: '/elite-assistants' },
+              { name: 'Delegation', href: '/delegation' },
+              { name: 'AI', href: '/ai' },
+              { name: 'Why Athena', href: '/why-athena' },
+              { name: 'Pricing', href: '/pricing' },
+              { name: 'Love ❤', href: '/testimonials' },
+            ].map(link => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-xl font-semibold tracking-wide text-athena-cream/90 hover:text-athena-cream transition-colors"
+              >
+                {link.name}
+              </Link>
             ))}
-          </ul>
+          </div>
           
-          {/* CTA Button (Desktop) */}
-          <Button 
-            variant="default" 
-            className="hidden md:flex bg-elite-teal hover:bg-elite-teal/90 text-athena-cream relative overflow-hidden group border border-athena-cream/20 hover:border-athena-cream/40 shadow-md"
-            asChild
-          >
-            <a 
-              href="#get-started"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavLinkClick('get-started');
-              }}
+          {/* CTA Button (Desktop) - Changed to Beige Outline */}
+          <div className="hidden md:block">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 px-8 py-6 text-lg rounded-xl font-semibold tracking-wide"
+              asChild
             >
-              Start Free Trial
-              <span className="absolute inset-0 bg-athena-cream/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-            </a>
-          </Button>
+              {/* TODO: Verify correct link destination for "Begin Here" */}
+              <Link to="/how-it-works">Begin Here</Link> 
+            </Button>
+          </div>
           
           {/* Mobile Menu Button */}
           <button
@@ -170,11 +137,11 @@ const Navbar: React.FC = () => {
               : 'max-h-0 opacity-0 transform -translate-y-4'
           }`}
         >
-          <div className="bg-elite-teal backdrop-blur-sm rounded-xl shadow-md p-6 mt-2 border border-athena-cream/10">
+          <div className="bg-athena-navy/90 backdrop-blur-sm rounded-xl shadow-md p-6 mt-2 border border-athena-cream/10">
             <ul className="space-y-4">
               {[
                 { id: 'hero', label: 'Home' },
-                { id: 'features', label: 'Why Athena' },
+                { id: 'features', label: 'Why Horizons' },
                 { id: 'testimonials', label: 'Testimonials' },
                 { id: 'pricing', label: 'Pricing' },
               ].map((link) => (
@@ -183,8 +150,8 @@ const Navbar: React.FC = () => {
                     href={`#${link.id}`}
                     className={`block py-2 px-3 rounded-md transition-colors duration-300 ${
                       activeLink === link.id
-                        ? 'bg-elite-teal/50 text-athena-cream border border-athena-cream/10 font-medium'
-                        : 'text-athena-cream/80 hover:text-athena-cream hover:bg-elite-teal/50'
+                        ? 'bg-athena-cream/10 text-athena-cream border border-athena-cream/10 font-medium'
+                        : 'text-athena-cream/80 hover:text-athena-cream hover:bg-athena-cream/10'
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
@@ -197,11 +164,11 @@ const Navbar: React.FC = () => {
               ))}
               <li className="pt-2">
                 <Button 
-                  variant="default" 
-                  className="w-full bg-elite-teal hover:bg-elite-teal/90 text-athena-cream border border-athena-cream/20 hover:border-athena-cream/40 shadow-md"
-                  onClick={() => handleNavLinkClick('get-started')}
+                  variant="outline"
+                  className="w-full border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 font-semibold tracking-wide"
+                  onClick={() => handleNavLinkClick('how-it-works')} // TODO: Verify correct link destination for "Begin Here"
                 >
-                  Start Free Trial
+                  Begin Here
                 </Button>
               </li>
             </ul>

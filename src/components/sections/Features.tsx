@@ -74,7 +74,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-24 md:py-32 bg-athena-navy relative overflow-hidden">
+    <section id="features" className="py-24 md:py-32 bg-athena-navy relative overflow-hidden -mt-1">
       {/* Background elements */}
       <div className="absolute inset-0 bg-texture-dots opacity-30"></div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-mint-400/20 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
@@ -195,26 +195,11 @@ const Features: React.FC = () => {
           </div>
         </div>
         
-        {/* Call to action */}
-        <div className={`mt-24 text-center transition-all duration-1000 delay-700 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}>
-          <h3 className="text-2xl md:text-3xl font-serif font-medium mb-8 text-athena-cream">
-            Ready to experience the full power of <span className="highlight-text">Athena</span>?
-          </h3>
-          
-          <Button 
-            variant="default" 
-            size="lg" 
-            className="hover-lift bg-athena-green text-athena-navy hover:bg-athena-green/90 px-8 py-6 text-lg rounded-xl"
-            asChild
-          >
-            <a href="#pricing">
-              <Zap className="mr-2 h-5 w-5" />
-              <span>Start your free trial</span>
-            </a>
+        {/* CTA */}
+        <div className="text-center mt-20">
+          <Button className="bg-athena-green hover:bg-athena-green/90 text-black px-10 py-6 text-lg font-semibold">
+            Get Started
           </Button>
-          <p className="text-sm text-athena-cream/70 mt-4">No credit card required • 14-day trial</p>
         </div>
       </div>
     </section>

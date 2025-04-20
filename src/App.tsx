@@ -6,8 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import WhyAthena from "./pages/WhyAthena";
-import Love from "./pages/Love";
 import { ArrowRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -99,7 +97,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready to Reclaim Your Time?</h2>
           <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
-            Start your 14-day free trial today. No credit card required.
+            Get started with Athena today and transform your productivity.
           </p>
           <Button 
             size="lg"
@@ -127,13 +125,10 @@ const AppContent = () => {
           <Route path="/pricing" element={<Index />} />
           <Route path="/get-started" element={<Index />} />
           <Route path="/assessment" element={<Index />} />
-          <Route path="/why-athena" element={<WhyAthena />} />
-          <Route path="/love" element={<Love />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
-      <FloatingCTA />
     </>
   );
 };

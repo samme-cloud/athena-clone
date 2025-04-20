@@ -3,9 +3,9 @@ export const StatsSection = () => {
     <div className="py-20 md:py-28 lg:py-36 bg-black">
       <div className="athena-container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Trusted by industry leaders</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Elite Assistants</h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Our clients include elite leaders across various industries
+            Our service helps leaders across various industries achieve more
           </p>
         </div>
         

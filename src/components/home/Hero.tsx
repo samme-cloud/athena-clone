@@ -82,18 +82,6 @@ export const Hero = () => {
             </Button>
           </Link>
         </div>
-        
-        {/* Social proof capsule */}
-        <div className={`mt-16 py-3 px-6 rounded-full border border-gray-800 inline-flex items-center gap-3 transition-all duration-1000 delay-600 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="flex -space-x-3">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-athena-green/40 to-athena-blue/40 border border-gray-800 flex items-center justify-center text-xs font-bold">
-                {i}
-              </div>
-            ))}
-          </div>
-          <span className="text-sm text-gray-300">Trusted by <span className="text-white font-medium">2000+</span> founders & executives</span>
-        </div>
       </div>
       
       {/* Scroll down indicator */}

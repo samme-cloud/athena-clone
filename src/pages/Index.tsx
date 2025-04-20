@@ -83,64 +83,64 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="min-h-screen flex flex-col bg-athena-navy text-athena-cream">
       <Navbar />
       
-      <main className="flex-grow bg-black">
+      <main className="flex-grow bg-athena-navy">
         <Hero />
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <ClientLogos />
         </section>
         
-        <section id="elite-assistants" className="section-gap bg-black">
+        <section id="elite-assistants" className="section-gap bg-athena-navy">
           <StatsSection />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <AthenaEdge />
         </section>
         
-        <section id="delegation" className="section-gap bg-black">
+        <section id="delegation" className="section-gap bg-athena-navy">
           <DelegationLevels />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <PlaybookSection />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <TimeAbundance />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <AssistantHireSection />
         </section>
         
-        <section id="services" className="section-gap bg-black">
+        <section id="services" className="section-gap bg-athena-navy">
           <ServiceTabs />
         </section>
         
-        <section id="why-athena" className="section-gap bg-black">
+        <section id="why-athena" className="section-gap bg-athena-navy">
           <AssistantComparison />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <CommunitySection />
         </section>
         
-        <section className="section-gap bg-black">
+        <section className="section-gap bg-athena-navy">
           <Testimonials />
         </section>
         
-        <section id="pricing" className="section-gap bg-black">
+        <section id="pricing" className="section-gap bg-athena-navy">
           <NewsletterSection />
         </section>
         
-        <section id="get-started" className="bg-black text-center section-padding section-gap fade-in-section">
+        <section id="get-started" className="bg-athena-navy text-center section-padding section-gap fade-in-section">
           <div className="athena-container">
-             <h2 className="font-display text-heading-1 text-white mb-6">Ready to Get Started?</h2>
-             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+             <h2 className="font-display text-heading-1 text-athena-cream mb-6">Ready to Get Started?</h2>
+             <p className="text-body-lg text-athena-cream/80 max-w-2xl mx-auto mb-10">
                Contact us today to begin your journey towards peak performance and reclaim your valuable time.
              </p>
              <a 
