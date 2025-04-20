@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import FreeTrialModal from "@/components/ui/FreeTrialModal";
 
 // Removed Smooth scroll helper function - now handled globally in script.js
 
@@ -40,19 +42,26 @@ const Navbar: React.FC = () => {
   // Handle navigation - redirects to home page first if on a different page
   const handleNavLinkClick = (sectionId: string) => {
     setIsMenuOpen(false);
-    setActiveLink(sectionId);
-    
-    const isHomePage = location.pathname === '/';
-    
-    if (!isHomePage) {
-      // Navigate to home page first, then scroll to section after navigation completes
-      navigate('/', { state: { scrollToSection: sectionId } });
-    } else {
-      // Already on home page, just scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+    // Check if the target is an internal link or section ID
+    if (!sectionId.startsWith('/')) {
+      setActiveLink(sectionId);
+      const isHomePage = location.pathname === '/';
+      
+      if (!isHomePage) {
+        // Navigate to home page first, then scroll to section
+        navigate('/', { state: { scrollToSection: sectionId } });
+      } else {
+        // Already on home page, just scroll to section
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
+    } else {
+      // Handle direct navigation links (like /why-athena)
+      navigate(sectionId);
+      // Reset active link if navigating away from homepage sections
+      setActiveLink(''); 
     }
   };
 
@@ -96,23 +105,27 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.href}
                 className="text-xl font-semibold tracking-wide text-athena-cream/90 hover:text-athena-cream transition-colors"
+                onClick={() => handleNavLinkClick(link.href)}
               >
                 {link.name}
               </Link>
             ))}
           </div>
           
-          {/* CTA Button (Desktop) - Changed to Beige Outline */}
+          {/* CTA Button (Desktop) - Triggers Modal */}
           <div className="hidden md:block">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 px-8 py-6 text-lg rounded-xl font-semibold tracking-wide"
-              asChild
-            >
-              {/* TODO: Verify correct link destination for "Begin Here" */}
-              <Link to="/how-it-works">Begin Here</Link> 
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 px-8 py-6 text-lg rounded-xl font-semibold tracking-wide"
+                >
+                  Begin Here
+                </Button>
+              </DialogTrigger>
+              <FreeTrialModal />
+            </Dialog>
           </div>
           
           {/* Mobile Menu Button */}
@@ -141,7 +154,7 @@ const Navbar: React.FC = () => {
             <ul className="space-y-4">
               {[
                 { id: 'hero', label: 'Home' },
-                { id: 'features', label: 'Why Horizons' },
+                { id: 'features', label: 'Features' },
                 { id: 'testimonials', label: 'Testimonials' },
                 { id: 'pricing', label: 'Pricing' },
               ].map((link) => (
@@ -162,14 +175,19 @@ const Navbar: React.FC = () => {
                   </a>
                 </li>
               ))}
+              {/* Mobile CTA Button - Triggers Modal */}
               <li className="pt-2">
-                <Button 
-                  variant="outline"
-                  className="w-full border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 font-semibold tracking-wide"
-                  onClick={() => handleNavLinkClick('how-it-works')} // TODO: Verify correct link destination for "Begin Here"
-                >
-                  Begin Here
-                </Button>
+                 <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      variant="outline"
+                      className="w-full border-athena-cream/60 text-athena-cream hover:bg-athena-cream/10 font-semibold tracking-wide"
+                    >
+                      Begin Here
+                    </Button>
+                  </DialogTrigger>
+                  <FreeTrialModal />
+                </Dialog>
               </li>
             </ul>
           </div>

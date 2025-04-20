@@ -9,11 +9,11 @@ import DelegationLevels from "../components/home/DelegationLevels";
 import PlaybookSection from "../components/home/PlaybookSection";
 import TimeAbundance from "../components/home/TimeAbundance";
 import AssistantHireSection from "../components/home/AssistantHireSection";
-import ServiceTabs from "../components/home/ServiceTabs";
 import AssistantComparison from "../components/home/AssistantComparison";
 import CommunitySection from "../components/home/CommunitySection";
 import Testimonials from "../components/home/Testimonials";
 import NewsletterSection from "../components/home/NewsletterSection";
+import AssistantCarousel from "../components/home/AssistantCarousel";
 
 const Index = () => {
   // Set up scroll-based animations
@@ -117,8 +117,8 @@ const Index = () => {
           <AssistantHireSection />
         </section>
         
-        <section id="services" className="section-gap bg-athena-navy">
-          <ServiceTabs />
+        <section id="assistants-showcase" className="bg-athena-navy">
+          <AssistantCarousel />
         </section>
         
         <section id="why-athena" className="section-gap bg-athena-navy">
