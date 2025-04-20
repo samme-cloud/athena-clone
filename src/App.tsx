@@ -6,8 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { ArrowRight, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 // Layout components
 import Navbar from './components/layout/Navbar';
@@ -31,54 +29,6 @@ const SectionLoading = () => (
   </div>
 );
 
-// Floating CTA Button
-const FloatingCTA = () => {
-  const [isDismissed, setIsDismissed] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Use the same navigation logic as the navbar
-  const handleClick = () => {
-    const isHomePage = location.pathname === '/';
-    
-    if (!isHomePage) {
-      navigate('/', { state: { scrollToSection: 'get-started' } });
-    } else {
-      const element = document.getElementById('get-started');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    // Track CTA click (connect to your analytics system)
-    console.log('Analytics: Floating CTA Clicked');
-    // Example analytics call:
-    // window.analytics.track('floating_cta_clicked');
-  };
-
-  if (isDismissed) return null;
-
-  return (
-    <div className="fixed bottom-6 right-6 z-40 flex items-center">
-      <Button 
-        size="lg" 
-        className="bg-mint-700 hover:bg-mint-800 text-white px-6 py-5 rounded-full shadow-lg hover:shadow-xl transition-all group"
-        onClick={handleClick}
-      >
-        <span className="mr-2">Start Free Trial</span>
-        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-      </Button>
-      <button 
-        onClick={() => setIsDismissed(true)} 
-        className="ml-2 p-2 bg-white rounded-full shadow hover:bg-gray-100 transition-colors"
-        aria-label="Dismiss"
-      >
-        <X className="w-4 h-4 text-gray-500" />
-      </button>
-    </div>
-  );
-};
-
 const HomePage = () => {
   return (
     <>
@@ -99,13 +49,11 @@ const HomePage = () => {
           <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
             Get started with Athena today and transform your productivity.
           </p>
-          <Button 
-            size="lg"
-            className="bg-mint-700 hover:bg-mint-800 text-white px-8 py-6 text-lg rounded-xl"
+          <button 
+            className="bg-mint-700 hover:bg-mint-800 text-white px-8 py-6 text-lg rounded-xl font-medium inline-flex items-center"
           >
             Start Your Free Trial
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          </button>
         </div>
       </div>
     </>
